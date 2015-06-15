@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 15:16:30 2015 danilov dimitri
-** Last update Mon Jun 15 17:56:03 2015 danilov dimitri
+** Last update Mon Jun 15 20:58:18 2015 danilov dimitri
 */
 
 #include "reborn.h"
@@ -56,7 +56,10 @@ int		menu(t_game *game)
       if (event.type == SDL_MOUSEBUTTONUP)
 	button = which_button(event);
       if (button == PLAY)
-	FMOD_ChannelGroup_Stop(canal);
+	{
+	  FMOD_ChannelGroup_Stop(canal);
+	  load_map(game);
+	}
       if (button == EXIT)
 	exit(0);
     }

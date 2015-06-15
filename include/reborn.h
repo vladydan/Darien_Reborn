@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 14:59:05 2015 danilov dimitri
-** Last update Mon Jun 15 17:15:10 2015 danilov dimitri
+** Last update Mon Jun 15 23:52:05 2015 danilov dimitri
 */
 
 #ifndef REBORN_H_
@@ -16,12 +16,16 @@
 # include		<SDL/SDL_image.h>
 # include		<fmodex/fmod.h>
 # include		<stdlib.h>
+# include		<sys/types.h>
+# include		<sys/stat.h>
+# include		<fcntl.h>
 
 # define PLAY		1
 # define LOAD		2
 # define EXIT		3
 # define LENGH		1500
 # define HEIGH		844
+# define BUFFER_SIZE	2048
 
 typedef struct		s_item
 {
@@ -52,13 +56,26 @@ typedef struct		s_sdl
   FMOD_SYSTEM		*system;
 }			t_sdl;
 
+typedef struct		s_map
+{
+  char			**map;
+  SDL_Surface		*sprites[100];
+}			t_map;
+
 typedef struct		s_game
 {
   t_sdl			sdl;
   t_darien		*darien;
+  t_map			map;
 }			t_game;
 
 void			*xmalloc(int);
 int			check_button(int, int, int, int, int, int);
+char			*get_next_line(int);
+int			load_map(t_game *);
+char			str_to_tab(t_game *, int);
+int			my_getnbr(char *, int *);
+int			aff_screen(t_game *);
+int			play(t_game *);
 
 #endif /* !REBORN_H_ */
