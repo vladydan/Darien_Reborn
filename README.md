@@ -1,4 +1,4 @@
-# Darien_Reborn
+# Darien Reborn
 
 Darien Reborn is a personal project written in C with the lib SDL.
 
