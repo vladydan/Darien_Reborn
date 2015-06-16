@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 22:38:37 2015 danilov dimitri
-** Last update Tue Jun 16 17:03:29 2015 danilov dimitri
+** Last update Tue Jun 16 18:43:59 2015 danilov dimitri
 */
 
 #include	"reborn.h"
@@ -14,15 +14,14 @@ int		aff_sprite(t_game *game, SDL_Rect pos)
 {
   SDL_Rect	tmp;
 
-  printf("ok\n");
   tmp.x = pos.x + game->darien.darien.pos.x;
-  tmp.y = pos.y + game->darien.darien.pos.y;
+  tmp.y = pos.y + game->darien.darien.pos.y - 10;
+  SDL_SetColorKey(game->darien.darien.sprites[game->darien.darien.sprite_pos],
+		  SDL_SRCCOLORKEY, SDL_MapRGB(game->darien.darien.sprites
+					      [game->darien.darien.sprite_pos]->format, 0, 255, 0));
   SDL_BlitSurface(game->darien.darien.sprites[game->darien.darien.sprite_pos], NULL, game->sdl.screen,
 		  &tmp);
-  /* if (game->darien.darien.pos.x > 100) */
-  /*   { */
-  /*     game->darien.darien.pos.x = 0; */
-  /*   } */
+  return (0);
 }
 
 int		aff_background(t_game *game, SDL_Rect pos)
@@ -56,18 +55,16 @@ int		aff_screen(t_game *game)
     {
       pos.x = 0;
       j = -1;
-      while (++j != 20)
+      while (++j != 15)
 	{
 	  if (game->map.map[i][j] == 1)
 	    SDL_BlitSurface(game->map.sprites[1], NULL, game->sdl.screen,
 			    &pos);
-	  else if (game->map.map[i][j] == 0)
+	  else if ((game->map.map[i][j] == 0 || game->map.map[i][j] == 2))
 	    aff_background(game, pos);
-	  /* if (game->map.map[i][j] == 2) */
-	  /*   aff_sprite(game, pos); */
+	  if (game->map.map[i][j] == 2)
+	    aff_sprite(game, pos);
 	  pos.x += 100;
-	  usleep(50000);
-	  SDL_Flip(game->sdl.screen);
 	}
       pos.y += 52;
     }

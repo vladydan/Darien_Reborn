@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.net>
 **
 ** Started on  Sun Dec  7 11:45:34 2014 Danilov Dimitri
-** Last update Mon Jun 15 23:51:46 2015 danilov dimitri
+** Last update Tue Jun 16 18:29:10 2015 danilov dimitri
 */
 
 #include <stdlib.h>
@@ -50,6 +50,11 @@ char		str_to_tab(t_game *game, int fd)
       while (++j < a)
 	{
 	  game->map.map[i][j] = my_getnbr(line, &pos);
+	  if (game->map.map[i][j] == 2)
+	    {
+	      game->darien.darien.tpos.x = i;
+	      game->darien.darien.tpos.y = j;
+	    }
 	  pos++;
 	}
       i++;

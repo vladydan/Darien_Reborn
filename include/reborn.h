@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 14:59:05 2015 danilov dimitri
-** Last update Tue Jun 16 16:33:29 2015 danilov dimitri
+** Last update Tue Jun 16 18:19:32 2015 danilov dimitri
 */
 
 #ifndef REBORN_H_
@@ -43,6 +43,7 @@ typedef struct		s_entity
   int			agility;
   int			intellect;
   int			sprite_pos;
+  SDL_Rect		tpos;
   SDL_Surface		*sprites[NUMBER_SPRITE];
   SDL_Rect		pos;
 }			t_entity;
