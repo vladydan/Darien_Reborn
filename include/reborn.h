@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 14:59:05 2015 danilov dimitri
-** Last update Mon Jun 15 23:52:05 2015 danilov dimitri
+** Last update Tue Jun 16 16:33:29 2015 danilov dimitri
 */
 
 #ifndef REBORN_H_
@@ -24,8 +24,10 @@
 # define LOAD		2
 # define EXIT		3
 # define LENGH		1500
-# define HEIGH		844
+# define HEIGH		832
 # define BUFFER_SIZE	2048
+# define NUMBER_SPRITE	2
+# define DARIEN		2
 
 typedef struct		s_item
 {
@@ -40,6 +42,9 @@ typedef struct		s_entity
   int			strengh;
   int			agility;
   int			intellect;
+  int			sprite_pos;
+  SDL_Surface		*sprites[NUMBER_SPRITE];
+  SDL_Rect		pos;
 }			t_entity;
 
 typedef struct		s_darien
@@ -65,7 +70,7 @@ typedef struct		s_map
 typedef struct		s_game
 {
   t_sdl			sdl;
-  t_darien		*darien;
+  t_darien		darien;
   t_map			map;
 }			t_game;
 
@@ -77,5 +82,6 @@ char			str_to_tab(t_game *, int);
 int			my_getnbr(char *, int *);
 int			aff_screen(t_game *);
 int			play(t_game *);
-
+Uint32			getpixel(SDL_Surface *, int, int);
+void			putpixel(SDL_Surface *, int, int, Uint32);
 #endif /* !REBORN_H_ */

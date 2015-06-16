@@ -5,7 +5,7 @@
 ## Login   <danilo_d@epitech.net>
 ##
 ## Started on  Sat Nov 15 13:07:25 2014 Dimitri Danilov
-## Last update Mon Jun 15 23:30:42 2015 danilov dimitri
+## Last update Tue Jun 16 15:43:08 2015 danilov dimitri
 ##
 
 NAME	= Darien_Reborn
@@ -17,6 +17,7 @@ SRCS	= srcs/main.c \
 	  srcs/aff_map.c \
 	  srcs/load_map.c \
 	  srcs/check_buttons.c \
+	  srcs/get_pixel.c \
 	  srcs/my_get_nbr.c \
 	  srcs/xmalloc.c
 
