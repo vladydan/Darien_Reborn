@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 22:39:02 2015 danilov dimitri
-** Last update Tue Jun 16 18:47:47 2015 danilov dimitri
+** Last update Wed Jun 17 16:01:50 2015 danilov dimitri
 */
 
 #include "reborn.h"
@@ -31,13 +31,17 @@ int		gere_key(t_game *game, SDL_Event event)
 {
   if (event.key.keysym.sym == SDLK_RIGHT)
     {
-      game->darien.darien.sprite_pos = 1;
-      game->darien.darien.pos.x += 10;
+      game->darien.darien.sprite_pos += 1;
+      if (game->darien.darien.sprite_pos > NUMBER_SPRITE - 1)
+	game->darien.darien.sprite_pos = 3;
+      game->darien.darien.pos.x += 5;
     }
   if (event.key.keysym.sym == SDLK_LEFT)
     {
-      game->darien.darien.sprite_pos = 0;
-      game->darien.darien.pos.x -= 10;
+      game->darien.darien.sprite_pos += 1;
+      if (game->darien.darien.sprite_pos > NUMBER_SPRITE / 2 - 1)
+	game->darien.darien.sprite_pos = 0;
+      game->darien.darien.pos.x -= 5;
     }
   case_overflow(game, &game->darien.darien);
   return (0);
@@ -49,6 +53,9 @@ int		play(t_game *game)
   char		finish;
 
   finish = 1;
+  SDL_EnableKeyRepeat(70, 70);
+  printf("%d\n", game->darien.darien.sprite_pos);
+  music(game, "sprites/demacia.mp3");
   while (finish)
     {
       SDL_PollEvent(&event);

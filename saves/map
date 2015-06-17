@@ -3,7 +3,11 @@
 
 2
 sprites/ww_left.png
+sprites/ww_left_run0.png
+sprites/ww_left_run.png
 sprites/ww_right.png
+sprites/ww_right_run0.png
+sprites/ww_right_run.png
 
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 14:59:05 2015 danilov dimitri
-** Last update Tue Jun 16 18:19:32 2015 danilov dimitri
+** Last update Wed Jun 17 16:01:57 2015 danilov dimitri
 */
 
 #ifndef REBORN_H_
@@ -26,7 +26,7 @@
 # define LENGH		1500
 # define HEIGH		832
 # define BUFFER_SIZE	2048
-# define NUMBER_SPRITE	2
+# define NUMBER_SPRITE	6
 # define DARIEN		2
 
 typedef struct		s_item
@@ -85,4 +85,6 @@ int			aff_screen(t_game *);
 int			play(t_game *);
 Uint32			getpixel(SDL_Surface *, int, int);
 void			putpixel(SDL_Surface *, int, int, Uint32);
+FMOD_CHANNELGROUP	*music(t_game *game, char *music_title);
+
 #endif /* !REBORN_H_ */

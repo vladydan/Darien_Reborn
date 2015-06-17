@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 20:58:23 2015 danilov dimitri
-** Last update Tue Jun 16 15:57:06 2015 danilov dimitri
+** Last update Wed Jun 17 15:29:50 2015 danilov dimitri
 */
 
 #include "reborn.h"
@@ -39,7 +39,7 @@ void	load_sprites(int fd, t_game *game)
 	    game->darien.darien.sprites[i] = IMG_Load(str);
 	  game->darien.darien.pos.x = 0;
 	  game->darien.darien.pos.y = 0;
-	  game->darien.darien.sprite_pos = NUMBER_SPRITE - 1;
+	  game->darien.darien.sprite_pos = NUMBER_SPRITE / 2;
 	}
     }
 }

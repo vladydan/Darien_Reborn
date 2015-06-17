@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 15:16:30 2015 danilov dimitri
-** Last update Mon Jun 15 20:58:18 2015 danilov dimitri
+** Last update Wed Jun 17 15:37:47 2015 danilov dimitri
 */
 
 #include "reborn.h"
@@ -74,7 +74,7 @@ int		main(void)
   SDL_Init(SDL_INIT_VIDEO);
   FMOD_System_Create(&game->sdl.system);
   FMOD_System_Init(game->sdl.system, 2, FMOD_INIT_NORMAL, NULL);
-  game->sdl.screen = SDL_SetVideoMode(LENGH, HEIGH, 32, SDL_HWSURFACE);
+  game->sdl.screen = SDL_SetVideoMode(LENGH, HEIGH, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   menu(game);
   return (EXIT_SUCCESS);
 }
