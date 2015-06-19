@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 20:58:23 2015 danilov dimitri
-** Last update Wed Jun 17 15:29:50 2015 danilov dimitri
+** Last update Fri Jun 19 16:15:15 2015 danilov dimitri
 */
 
 #include "reborn.h"
@@ -27,21 +27,41 @@ void	load_sprites(int fd, t_game *game)
 {
   char  *str;
   int   nbr;
-  int	i;
 
-  i = -1;
   while ((str = get_next_line(fd)) && str[0] != 0)
     {
       nbr = atoi(str);
       if (nbr == DARIEN)
 	{
-	  while (++i != NUMBER_SPRITE && (str = get_next_line(fd)) != NULL)
-	    game->darien.darien.sprites[i] = IMG_Load(str);
-	  game->darien.darien.pos.x = 0;
-	  game->darien.darien.pos.y = 0;
-	  game->darien.darien.sprite_pos = NUMBER_SPRITE / 2;
+	  if ((str = get_next_line(fd)) != NULL)
+	    game->darien.darien.charset.sprite = IMG_Load(str);
+	  game->darien.darien.charset.sprite = SDL_DisplayFormat(game->darien.darien.charset.sprite);
+	  SDL_SetColorKey(game->darien.darien.charset.sprite, SDL_SRCCOLORKEY, SDL_MapRGB
+			  (game->darien.darien.charset.sprite->format, 0, 255, 0));
+	  game->darien.darien.charset.nbx = 4;
+	  game->darien.darien.charset.nby = 2;
+	  game->darien.darien.charset.w = game->darien.darien.charset.sprite->w / 4;
+	  game->darien.darien.charset.h = game->darien.darien.charset.sprite->h / 2;
 	}
     }
+}
+
+void	SetAnim(t_anim *A, int framedepart, int nbframes, int delay)
+{
+  A->frame_start = framedepart;
+  A->nbframes = nbframes;
+  A->delay = delay;
+}
+
+int	initialise_sprite(t_entity *entity, int first)
+{
+  entity->sprite.pos.x = 0;
+  entity->sprite.pos.y = -30;
+  entity->sprite.sprite = &entity->charset;
+  SetAnim(&entity->sprite.anim, first, 1, 1);
+  entity->sprite.sens = SENS_UP;
+  entity->sprite.status = STAT_STOP;
+  return (0);
 }
 
 int	load_map(t_game *game)
@@ -51,6 +71,7 @@ int	load_map(t_game *game)
   fd = open("saves/map", O_RDONLY);
   load_texture(fd, game);
   load_sprites(fd, game);
+  initialise_sprite(&game->darien.darien, 4);
   str_to_tab(game, fd);
   play(game);
   return (0);

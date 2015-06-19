@@ -5,23 +5,35 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 22:38:37 2015 danilov dimitri
-** Last update Wed Jun 17 14:11:13 2015 danilov dimitri
+** Last update Fri Jun 19 16:00:11 2015 danilov dimitri
 */
 
 #include	"reborn.h"
 
-int		aff_sprite(t_game *game, SDL_Rect pos)
+void CharsetGetSrcRect(t_charset *C, SDL_Rect *src, int frame)
+{
+  src->w = (Uint16)C->w;
+  src->h = (Uint16)C->h;
+  src->x = (Sint16)((frame % C->nbx) * C->w);
+  src->y = (Sint16)((frame / C->nbx) * C->h);
+}
+
+int AnimGetFrame(t_anim *A)
+{
+  return (A->frame_start + (SDL_GetTicks() / A->delay) % A->nbframes);
+}
+
+
+int		aff_sprite(t_game *game, SDL_Rect pos, t_sprite *S)
 {
   SDL_Rect	tmp;
+  SDL_Rect	src;
+  int		frame = AnimGetFrame(&S->anim);
 
-  tmp.x = pos.x + game->darien.darien.pos.x;
-  tmp.y = pos.y + game->darien.darien.pos.y - 10;
-  SDL_SetColorKey(game->darien.darien.sprites[game->darien.darien.sprite_pos],
-		  SDL_SRCCOLORKEY, SDL_MapRGB(game->darien.darien.sprites
-					      [game->darien.darien.sprite_pos]->format, 0, 255, 0));
-  SDL_BlitSurface(game->darien.darien.sprites[game->darien.darien.sprite_pos], NULL, game->sdl.screen,
-		  &tmp);
-  return (0);
+  tmp.x = S->pos.x + pos.x;
+  tmp.y = S->pos.y + pos.y;
+  CharsetGetSrcRect(S->sprite ,&src, frame);
+  SDL_BlitSurface(S->sprite->sprite, &src, game->sdl.screen, &tmp);
 }
 
 int		aff_background(t_game *game, SDL_Rect pos)
@@ -63,10 +75,8 @@ int		aff_screen(t_game *game)
 	  if (game->map.map[i][j] == 1)
 	    SDL_BlitSurface(game->map.sprites[1], NULL, game->sdl.screen,
 			    &pos);
-	  /* else if ((game->map.map[i][j] == 0 || game->map.map[i][j] == 2)) */
-	  /*   aff_background(game, pos); */
 	  if (game->map.map[i][j] == 2)
-	    aff_sprite(game, pos);
+	    aff_sprite(game, pos, &game->darien.darien.sprite);
 	  pos.x += 100;
 	}
       pos.y += 52;

@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 14:59:05 2015 danilov dimitri
-** Last update Wed Jun 17 16:01:57 2015 danilov dimitri
+** Last update Fri Jun 19 18:18:22 2015 danilov dimitri
 */
 
 #ifndef REBORN_H_
@@ -28,6 +28,38 @@
 # define BUFFER_SIZE	2048
 # define NUMBER_SPRITE	6
 # define DARIEN		2
+# define SENS_UP	2
+# define SENS_RIGHT	1500
+# define SENS_DOWN	2
+# define SENS_LEFT	3
+# define STAT_STOP	8
+# define STAT_WALK	1500
+# define GREEN		0x00FF00
+
+typedef struct		s_anim
+{
+  int			frame_start;
+  int			nbframes;
+  int			delay;
+}			t_anim;
+
+typedef	struct		s_charset
+{
+  SDL_Surface		*sprite;
+  int			nbx;
+  int			nby;
+  int			w;
+  int			h;
+}			t_charset;
+
+typedef struct		s_sprite
+{
+  t_charset		*sprite;
+  t_anim		anim;
+  SDL_Rect		pos;
+  int			sens;
+  int			status;
+}			t_sprite;
 
 typedef struct		s_item
 {
@@ -44,7 +76,8 @@ typedef struct		s_entity
   int			intellect;
   int			sprite_pos;
   SDL_Rect		tpos;
-  SDL_Surface		*sprites[NUMBER_SPRITE];
+  t_charset		charset;
+  t_sprite		sprite;
   SDL_Rect		pos;
 }			t_entity;
 
@@ -86,5 +119,8 @@ int			play(t_game *);
 Uint32			getpixel(SDL_Surface *, int, int);
 void			putpixel(SDL_Surface *, int, int, Uint32);
 FMOD_CHANNELGROUP	*music(t_game *game, char *music_title);
+void			SetAnim(t_anim *A, int framedepart, int nbframes, int delay);
+int			physics(t_entity *entity, t_game *game);
+int			case_overflow(t_game *game, t_entity *entity);
 
 #endif /* !REBORN_H_ */

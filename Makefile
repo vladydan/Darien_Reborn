@@ -5,7 +5,7 @@
 ## Login   <danilo_d@epitech.net>
 ##
 ## Started on  Sat Nov 15 13:07:25 2014 Dimitri Danilov
-## Last update Wed Jun 17 14:24:24 2015 danilov dimitri
+## Last update Fri Jun 19 18:11:48 2015 danilov dimitri
 ##
 
 NAME	= Darien_Reborn
@@ -15,6 +15,7 @@ SRCS	= srcs/main.c \
 	  srcs/str_to_tab.c \
 	  srcs/reborn.c \
 	  srcs/music.c \
+	  srcs/collision.c \
 	  srcs/aff_map.c \
 	  srcs/load_map.c \
 	  srcs/check_buttons.c \
