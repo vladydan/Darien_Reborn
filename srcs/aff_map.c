@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 22:38:37 2015 danilov dimitri
-** Last update Fri Jun 19 16:00:11 2015 danilov dimitri
+** Last update Mon Jun 22 17:15:45 2015 danilov dimitri
 */
 
 #include	"reborn.h"
@@ -34,6 +34,7 @@ int		aff_sprite(t_game *game, SDL_Rect pos, t_sprite *S)
   tmp.y = S->pos.y + pos.y;
   CharsetGetSrcRect(S->sprite ,&src, frame);
   SDL_BlitSurface(S->sprite->sprite, &src, game->sdl.screen, &tmp);
+  return (0);
 }
 
 int		aff_background(t_game *game, SDL_Rect pos)

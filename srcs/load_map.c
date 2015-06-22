@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 20:58:23 2015 danilov dimitri
-** Last update Fri Jun 19 16:15:15 2015 danilov dimitri
+** Last update Mon Jun 22 16:47:22 2015 danilov dimitri
 */
 
 #include "reborn.h"
@@ -56,7 +56,7 @@ void	SetAnim(t_anim *A, int framedepart, int nbframes, int delay)
 int	initialise_sprite(t_entity *entity, int first)
 {
   entity->sprite.pos.x = 0;
-  entity->sprite.pos.y = -30;
+  entity->sprite.pos.y = 0;
   entity->sprite.sprite = &entity->charset;
   SetAnim(&entity->sprite.anim, first, 1, 1);
   entity->sprite.sens = SENS_UP;

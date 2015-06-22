@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.net>
 **
 ** Started on  Sun Dec  7 11:45:34 2014 Danilov Dimitri
-** Last update Tue Jun 16 18:29:10 2015 danilov dimitri
+** Last update Sat Jun 20 16:05:02 2015 danilov dimitri
 */
 
 #include <stdlib.h>
@@ -59,5 +59,7 @@ char		str_to_tab(t_game *game, int fd)
 	}
       i++;
     }
+  game->map.pos.x = i;
+  game->map.pos.y = j;
   return (0);
 }

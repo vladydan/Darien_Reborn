@@ -5,7 +5,7 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 14:59:05 2015 danilov dimitri
-** Last update Fri Jun 19 18:18:22 2015 danilov dimitri
+** Last update Sat Jun 20 18:59:18 2015 danilov dimitri
 */
 
 #ifndef REBORN_H_
@@ -19,7 +19,7 @@
 # include		<sys/types.h>
 # include		<sys/stat.h>
 # include		<fcntl.h>
-
+# include		<stdbool.h>
 # define PLAY		1
 # define LOAD		2
 # define EXIT		3
@@ -35,6 +35,10 @@
 # define STAT_STOP	8
 # define STAT_WALK	1500
 # define GREEN		0x00FF00
+# define SPR_X		52
+# define SPR_Y		100
+# define SDL_COLLIDE_MAX(a,b)((a > b) ? a : b)
+# define SDL_COLLIDE_MIN(a,b)((a < b) ? a : b)
 
 typedef struct		s_anim
 {
@@ -98,6 +102,7 @@ typedef struct		s_sdl
 typedef struct		s_map
 {
   char			**map;
+  SDL_Rect		pos;
   SDL_Surface		*sprites[100];
 }			t_map;
 

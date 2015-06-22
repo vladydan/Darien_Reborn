@@ -5,23 +5,23 @@
 ** Login   <danilo_d@epitech.eu>
 **
 ** Started on  Mon Jun 15 22:39:02 2015 danilov dimitri
-** Last update Fri Jun 19 18:42:29 2015 danilov dimitri
+** Last update Mon Jun 22 17:11:28 2015 danilov dimitri
 */
 
 #include "reborn.h"
 
 int		case_overflow(t_game *game, t_entity *entity)
 {
-  if (entity->pos.x > 100)
+  if (entity->sprite.pos.x > 50)
     {
       game->map.map[entity->tpos.x][entity->tpos.y] = 0;
-      entity->pos.x = 0;
+      entity->sprite.pos.x = -49;
       game->map.map[entity->tpos.x][++entity->tpos.y] = 2;
     }
-  if (entity->pos.x < -100)
+  else if (entity->sprite.pos.x < -50)
     {
       game->map.map[entity->tpos.x][entity->tpos.y] = 0;
-      entity->pos.x = 0;
+      entity->sprite.pos.x = 49;
       game->map.map[entity->tpos.x][--entity->tpos.y] = 2;
     }
   if (entity->sprite.pos.y > 52)
@@ -30,7 +30,7 @@ int		case_overflow(t_game *game, t_entity *entity)
       entity->sprite.pos.y = 0;
       game->map.map[++entity->tpos.x][entity->tpos.y] = 2;
     }
-  if (entity->sprite.pos.y < -52)
+  else if (entity->sprite.pos.y < -52)
     {
       game->map.map[entity->tpos.x][entity->tpos.y] = 0;
       entity->sprite.pos.y = 0;
